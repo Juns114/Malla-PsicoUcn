@@ -1,0 +1,23 @@
+const cursos = [
+  { nombre: "Psicología General", semestre: 1 },
+  { nombre: "Neurobiología", semestre: 1 },
+  { nombre: "Métodos de Investigación", semestre: 2 },
+  { nombre: "Psicopatología", semestre: 3 },
+  { nombre: "Práctica Profesional", semestre: 8 },
+];
+
+const malla = document.getElementById("malla");
+
+for (let i = 1; i <= 8; i++) {
+  const columna = document.createElement("div");
+  columna.style.gridColumn = i;
+  cursos
+    .filter(curso => curso.semestre === i)
+    .forEach(curso => {
+      const div = document.createElement("div");
+      div.className = "curso";
+      div.innerText = curso.nombre;
+      columna.appendChild(div);
+    });
+  malla.appendChild(columna);
+}
